@@ -8,6 +8,7 @@ ReactDOM.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
+  // inserting React components when targeting the "root" ID.
   document.getElementById('root')
 );
 
