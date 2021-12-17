@@ -8,6 +8,7 @@ import ContactForm from './components/Contact';
 
 
 function App() {
+  const [contactSelected, setContactSelected] = useState(false);
   const [categories] = useState([
     {
       name: 'commercial',
@@ -25,13 +26,21 @@ function App() {
         <Nav
           categories={categories}
           setCurrentCategory={setCurrentCategory}
-          currentCategory={currentCategory}>
+          currentCategory={currentCategory}
+          contactSelected={contactSelected}
+          setContactSelected={setContactSelected}
+          >
         </Nav>
         <main>
+          {!contactSelected ? (
+            // the open and closed brackets are known as "React Fragments"
+            <>
+              <Gallery currentCategory={currentCategory}></Gallery>
+              <About></About>
+            </>
+          ) : (
             <ContactForm></ContactForm>
-            <Gallery currentCategory={currentCategory}></Gallery>
-            <About></About>
-          
+          )}
         </main>
     </div>
   );
